@@ -39,7 +39,7 @@ while True:
         if qtd_idosos > 0:
             qtd_idosos -= 1
         elif qtd_agendamentos > 0:
-            qtd_agendamentos-=
+            qtd_agendamentos -= 1
         paciente = pacientes.popleft()
         print(f"Paciente {paciente} foi atendido.")
     elif opcao == 3:
