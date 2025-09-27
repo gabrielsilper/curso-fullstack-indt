@@ -46,8 +46,7 @@ while True:
         if not pacientes:
             print("Não há pacientes na fila.")
             continue
-        paciente = pacientes.popleft()
-        print(f"Paciente {paciente} foi atendido.")
+        print(f"Paciente {pacientes[0]} é o próximo a ser atendido.")
     else:
         print("Opção inválida")
     print("Fila de pacientes: ", pacientes)
