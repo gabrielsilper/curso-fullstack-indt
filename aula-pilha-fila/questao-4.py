@@ -34,6 +34,8 @@ while True:
         if not clientes:
             print("Não há clientes na fila")
             continue
+        if qtd_idosos > 0:
+            qtd_idosos -= 1
         cliente = clientes.popleft()
         print(f"Cliente {cliente} foi atendido.")
     elif opcao == 3:
@@ -41,5 +43,6 @@ while True:
             print("Não há clientes na fila")
             continue
         print(f"Cliente {clientes[0]} é o próximo a ser atendido.")
+    else:
+        print("Opção inválida")
     print("Fila de clientes: ", clientes)
-    opcao = int(input("Informe a ação que deseja realizar: "))

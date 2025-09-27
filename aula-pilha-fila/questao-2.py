@@ -29,3 +29,5 @@ while True:
             print(f"Página Atual: ", historico[-1])
         else:
             print(f"Não existe nenhuma página no histórico")
+    else:
+        print("Opção inválida!")

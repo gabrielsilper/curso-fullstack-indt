@@ -36,6 +36,10 @@ while True:
         if not pacientes:
             print("Não há pacientes na fila.")
             continue
+        if qtd_idosos > 0:
+            qtd_idosos -= 1
+        elif qtd_agendamentos > 0:
+            qtd_agendamentos-=
         paciente = pacientes.popleft()
         print(f"Paciente {paciente} foi atendido.")
     elif opcao == 3:
@@ -44,5 +48,8 @@ while True:
             continue
         paciente = pacientes.popleft()
         print(f"Paciente {paciente} foi atendido.")
+    else:
+        print("Opção inválida")
+    print("Fila de pacientes: ", pacientes)
 
     
