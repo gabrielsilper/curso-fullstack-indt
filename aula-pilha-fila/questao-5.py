@@ -17,6 +17,7 @@ while True:
     opcao = int(input("Informe a ação que deseja realizar:"))
 
     if opcao == 4:
+        print("Encerrando programa...")
         break
     elif opcao == 1:
         nome = input("Informe o nome do paciente: ")
