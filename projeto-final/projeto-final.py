@@ -96,13 +96,13 @@ while True:
             qtd_pesados -= 1
 
         expedido = pedidos.popleft()
-        if expedido[3] > matriz_capacidade_max[expedido[4] - 1, expedido[5] -1]:
+        if expedido[3] > matriz_capacidade_max[expedido[4] - 1, expedido[5] - 1]:
             print(
                 "Pedido possui quantidade de caixa maior que capacidade da rota! Pedido adiado!"
             )
             pedidos.append(expedido)
             continue
-        matriz_qtd_caixas_expedidas[expedido[4]-1, expedido[5]-1] += expedido[3]
+        matriz_qtd_caixas_expedidas[expedido[4] - 1, expedido[5] - 1] += expedido[3]
         pedidos_expedidos.append(expedido)
         print(f"Pedido {expedido} foi expedido.")
 
@@ -116,7 +116,9 @@ while True:
             print("Não há pedidos para serem desfeitos")
             continue
         pedido_desfeito = pedidos_expedidos.pop()
-        matriz_qtd_caixas_expedidas[pedido_desfeito[4]-1, pedido_desfeito[5]-1] -= pedido_desfeito[3]
+        matriz_qtd_caixas_expedidas[
+            pedido_desfeito[4] - 1, pedido_desfeito[5] - 1
+        ] -= pedido_desfeito[3]
         pedidos.append(pedido_desfeito)
         print(f"O pedido {pedido_desfeito} voltou para o final da fila.")
     elif opcao == 4:
@@ -131,12 +133,12 @@ while True:
         urgentes = normais = riscos = 0
         for expedido in pedidos_expedidos:
             if expedido[1]:
-                urgentes+=1
+                urgentes += 1
             else:
-                normais+=1
+                normais += 1
 
             if expedido[-1]:
-                riscos+=1
+                riscos += 1
         print("Quantos pedidos urgentes: ", urgentes)
         print("Quantos pedidos normais: ", normais)
         print("Quantos pedidos com risco: ", riscos)
