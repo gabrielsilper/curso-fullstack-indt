@@ -1,7 +1,7 @@
 import numpy as np
 from collections import deque
 
-QTD_LOJAS = QTD_DEPOSITOS = 3
+QTD_LOJAS = QTD_DEPOSITOS = 1
 
 matriz_custo = np.zeros((QTD_LOJAS, QTD_DEPOSITOS))
 matriz_capacidade_max = np.zeros((QTD_LOJAS, QTD_DEPOSITOS))
@@ -27,15 +27,12 @@ pedidos = deque()
 pedidos_expedidos = deque()
 qtd_urgentes = qtd_leves = qtd_pesados = 0
 
-while True:
-    print(
-        "\nSeção de Cadastro de pedidos, para encerrar os cadastros digite 'Sair' no código do produto"
-    )
-    codigo = input("Informe o código do produto: ")
+qtd_pedidos = int(
+    input("\nSeção de Cadastro de pedidos, informe a quantidade de pedido: ")
+)
 
-    if codigo.lower() == "sair":
-        break
-
+for i in range(qtd_pedidos):
+    codigo = input("\nInforme o código do produto: ")
     urgencia = (
         input("Informe a urgência do pedido, U - Urgente | N - Normal: ").lower()
         == "U".lower()
