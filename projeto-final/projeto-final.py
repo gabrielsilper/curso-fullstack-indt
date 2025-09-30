@@ -116,7 +116,7 @@ while True:
         matriz_qtd_caixas_expedidas[
             pedido_desfeito[4] - 1, pedido_desfeito[5] - 1
         ] -= pedido_desfeito[3]
-        pedidos.append(pedido_desfeito)
+        pedidos.appendleft(pedido_desfeito)
         print(f"O pedido {pedido_desfeito} voltou para o final da fila.")
     elif opcao == 4:
         if not pedidos_expedidos:
