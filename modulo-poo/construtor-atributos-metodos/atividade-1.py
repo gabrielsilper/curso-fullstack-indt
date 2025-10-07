@@ -42,15 +42,15 @@ class CarrinhoDeCompras:
     def remover_ultimo_pedido(self):
         self.pedidos.pop()
 
-    def limpar_carrinho(self):
-        self.pedidos = []
+    def limpar(self):
+        self.pedidos.clear()
 
-    def mostrar_carrinho(self):
+    def mostrar(self):
         print("\n----- Carrinho -----")
         for id, pedido in enumerate(self.pedidos):
             print(pedido)
             print("ID:", id)
-        print("-------------------")
+        print("--------------------")
         print("Qtd. Itens: ", len(self))
         print("Total Carrinho: R$", self.calcular_total())
 
@@ -108,6 +108,10 @@ while True:
             print("Produto adicionado ao carrinho com sucesso!")
             continue
         case 3:
+            if not carrinho:
+                print("Não há itens no carrinho para ser removidos.")
+                continue
+
             id = int(input("Informe o ID do produto que quer adicionar ao carrinho: "))
             if id < 0 or id > len(carrinho.pedidos) - 1:
                 print("ID de produto inválido!")
@@ -129,6 +133,20 @@ while True:
                 print(
                     f"{qtd_remover} de {pedido.produto.nome} foram removidos do carrinho"
                 )
+        case 4:
+            if not carrinho:
+                print("Não há itens no carrinho para ser removidos.")
+                continue
+
+            pedido_pop = carrinho.pedidos.pop()
+            print(f"{pedido_pop.produto.nome} foi removido do carrinho")
+            continue
+        case 5:
+            if not carrinho:
+                print("Não há itens no carrinho para ser removidos.")
+                continue
+            carrinho.limpar()
+            print("Seu carrinho foi limpo!")
         case 6:
             print("\nO valor atual do seu carrinho é R$", carrinho.calcular_total())
             continue
@@ -136,7 +154,7 @@ while True:
             print(f"\nVocê tem {len(carrinho)} itens no seu carrinho!")
             continue
         case 8:
-            carrinho.mostrar_carrinho()
+            carrinho.mostrar()
             continue
         case _:
             print("Opção inválida")
