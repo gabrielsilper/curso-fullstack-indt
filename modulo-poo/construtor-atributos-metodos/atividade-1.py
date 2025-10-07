@@ -46,8 +46,10 @@ class CarrinhoDeCompras:
         self.pedidos = []
 
     def mostrar_carrinho(self):
-        for pedido in self.pedidos:
+        print("\n----- Carrinho -----")
+        for id, pedido in enumerate(self.pedidos):
             print(pedido)
+            print("ID:", id)
         print("-------------------")
         print("Qtd. Itens: ", len(self))
         print("Total Carrinho: R$", self.calcular_total())
@@ -64,7 +66,7 @@ if __name__ == "__main__":
 
 while True:
     print(
-    """
+        """
     1 - Ver produtos disponíveis
     2 - Adicionar produto ao carrinho
     3 - Remover produto do carrinho
@@ -94,8 +96,47 @@ while True:
             if id < 0 or id > len(produtos_disponiveis) - 1:
                 print("ID de produto inválido!")
                 continue
-            
-            qtd = int(input("Informe o ID do produto que quer adicionar ao carrinho: "))
-            
-            produto = produtos_disponiveis[id]
 
+            produto = produtos_disponiveis[id]
+            qtd = int(
+                input(
+                    f"Informe a quantidade do produto {produto.nome} que quer adicionar ao carrinho: "
+                )
+            )
+
+            carrinho.adicionar_pedido(Pedido(produto, qtd))
+            print("Produto adicionado ao carrinho com sucesso!")
+            continue
+        case 3:
+            id = int(input("Informe o ID do produto que quer adicionar ao carrinho: "))
+            if id < 0 or id > len(carrinho.pedidos) - 1:
+                print("ID de produto inválido!")
+                continue
+
+            pedido = carrinho.pedidos[id]
+            qtd_remover = int(
+                input(
+                    f"Informe quantos itens de {pedido.produto.nome} deseja remover.\n(informe -1 para remover tudo): "
+                )
+            )
+
+            if qtd_remover < -1:
+                print("Quantidade informada é inválida")
+            elif qtd_remover == -1 or pedido.qtd_produto <= qtd_remover:
+                carrinho.pedidos.remove(pedido)
+                print("Produto removido com sucesso do seu carrinho")
+            else:
+                print(
+                    f"{qtd_remover} de {pedido.produto.nome} foram removidos do carrinho"
+                )
+        case 6:
+            print("\nO valor atual do seu carrinho é R$", carrinho.calcular_total())
+            continue
+        case 7:
+            print(f"\nVocê tem {len(carrinho)} itens no seu carrinho!")
+            continue
+        case 8:
+            carrinho.mostrar_carrinho()
+            continue
+        case _:
+            print("Opção inválida")
