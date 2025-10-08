@@ -130,6 +130,7 @@ while True:
                 carrinho.pedidos.remove(pedido)
                 print("Produto removido com sucesso do seu carrinho")
             else:
+                pedido.qtd_produto -= qtd_remover
                 print(
                     f"{qtd_remover} de {pedido.produto.nome} foram removidos do carrinho"
                 )
