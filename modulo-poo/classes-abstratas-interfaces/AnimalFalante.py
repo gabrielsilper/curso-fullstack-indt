@@ -1,13 +1,20 @@
 from abc import ABC, abstractmethod
 
-class AnimalFlante(ABC):
+class AnimalFalante(ABC):
     @abstractmethod
     def falar(self):
         pass
 
-class ClassName:
-    def __init__(self, args):
-        pass
+class Papagaio(AnimalFalante):
+    def falar(self):
+        print("Aaa Aaa O Papagaio tá falando Aaa Aaa")
 
-    def method_name(self):
-        pass
+class GatoFofoqueiro(AnimalFalante):
+    def falar(self):
+        print("O Gato está fofocando...")
+
+papagaio = Papagaio()
+gato = GatoFofoqueiro()
+
+papagaio.falar()
+gato.falar()
