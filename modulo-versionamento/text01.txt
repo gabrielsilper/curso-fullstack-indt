@@ -1,0 +1,6 @@
+Aló Gabriel, esse comando adiciona algo no arquivo
+12
+12
+23
+45
+Olha o final do arquivo aeh
